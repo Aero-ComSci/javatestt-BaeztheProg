@@ -6,7 +6,8 @@ fi
 if [ -f CalculatorTest.java ]; then mv CalculatorTest.java src/test/java/ 
 fi
 
-cat > build.gradle <<'EOF' plugins { id 'java' }
+cat > build.gradle <<'EOF'
+plugins { id 'java' }
 
 repositories { mavenCentral() }
 

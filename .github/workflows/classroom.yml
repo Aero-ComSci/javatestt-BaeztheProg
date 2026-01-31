@@ -13,20 +13,17 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: test
-      id: test
+    - name: testercherster
+      id: testercherster
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: test
-        setup-command: cat <<EOF > build.gradle plugins { id 'java' } repositories
-          { mavenCentral() } sourceSets {     main { java { srcDirs = ['.'] } }     test
-          { java { srcDirs = ['.'] } } } dependencies { testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
-          } test { useJUnitPlatform() } EOF
+        test-name: testercherster
+        setup-command: "./setup.sh"
         command: gradle test
         timeout: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        TEST_RESULTS: "${{steps.test.outputs.result}}"
+        TESTERCHERSTER_RESULTS: "${{steps.testercherster.outputs.result}}"
       with:
-        runners: test
+        runners: testercherster

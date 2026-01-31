@@ -1,13 +1,13 @@
-cat <<EOF > build.gradle
-plugins { id 'java' }
-repositories { mavenCentral() }
-sourceSets {
-    main { java { srcDirs = ['.'] } }
-    test { java { srcDirs = ['.'] } }
-}
-dependencies { // Add JUnit 5 Jupiter API & Engine for testing 
- testImplementation'org.junit.jupiter:junit-jupiter-api:5.9.3'
- testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3' }
+mkdir -p src/main/java src/test/java
 
-test { useJUnitPlatform() }
-EOF
+if [ -f Calculator.java ]; then mv Calculator.java src/main/java/ fi
+
+if [ -f CalculatorTest.java ]; then mv CalculatorTest.java src/test/java/ fi
+
+cat > build.gradle <<'EOF' plugins { id 'java' }
+
+repositories { mavenCentral() }
+
+dependencies { testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0' }
+
+test { useJUnitPlatform() } EOF

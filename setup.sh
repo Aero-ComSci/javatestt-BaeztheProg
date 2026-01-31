@@ -12,4 +12,5 @@ repositories { mavenCentral() }
 
 dependencies { testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0' }
 
-test { useJUnitPlatform() } EOF
+test { useJUnitPlatform() } 
+EOF
